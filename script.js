@@ -3,7 +3,7 @@ const selectGenero = document.getElementById("tags");
 
 async function fetchData(genero) {
     try {
-        const response = await fetch(`https://274a87d7-e30e-48ad-aa9d-dd89d22f9316-00-281xklno63dr3.worf.replit.dev/radios?genero=${genero}`);
+        const response = await fetch(`https://radio-de-galena.onrender.com/radios?genero=${genero}`);
         const data = await response.json();
 
         if (!data || !data.data) return [];
@@ -11,7 +11,7 @@ async function fetchData(genero) {
         const enrichedRadios = await Promise.all(
             data.data.map(async (radio) => {
                 try {
-                    const res = await fetch(`https://274a87d7-e30e-48ad-aa9d-dd89d22f9316-00-281xklno63dr3.worf.replit.dev/radio/${radio.route.params.id}`);
+                    const res = await fetch(`https://radio-de-galena.onrender.com/radio/${radio.route.params.id}`);
                     const emisora = await res.json();
 
                     return {
